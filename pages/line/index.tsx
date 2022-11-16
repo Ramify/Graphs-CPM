@@ -21,7 +21,7 @@ const LineChart = (): JSX.Element => {
           margin={{
             left: 100,
             top: 50,
-            right: 24,
+            right: 100,
             bottom: 48,
           }}
           colors={{
