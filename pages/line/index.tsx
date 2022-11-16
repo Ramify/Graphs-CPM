@@ -8,6 +8,10 @@ const LineChart = (): JSX.Element => {
 
   if (data) {
     json = JSON.parse(data as string);
+    const values = json[0].data.map((e: {x: number, y: number}) => +e.y);
+    const max = Math.max(...values);
+    const min = Math.min(...values);
+
     return (
       <div
         style={{
@@ -17,10 +21,8 @@ const LineChart = (): JSX.Element => {
       >
         <ResponsiveLine
           data={json}
-
           margin={{
             left: 100,
-            top: 50,
             right: 100,
             bottom: 48,
           }}
@@ -41,7 +43,7 @@ const LineChart = (): JSX.Element => {
           yScale={{
             type: "linear",
             min: "auto",
-            max: "auto"
+            max: max + (max - min) * 0.25,
           }}
           yFormat=">-.0f"
           isInteractive={true}
