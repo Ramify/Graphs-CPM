@@ -19,7 +19,7 @@ const PieChart = (): JSX.Element => {
   return (
     <div style={{ width: "100vw", height: "100vh" }}>
       <ResponsivePie
-        arcLabel={(d) => `${d.value}${symbol}`}
+        arcLabel={(d) => d.value > 0 ?`${d.value}${symbol}` : ''}
         legends={[
           {
             anchor: "top-left",
