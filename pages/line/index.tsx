@@ -11,6 +11,7 @@ const LineChart = (): JSX.Element => {
     const values = json[0].data.map((e: {x: number, y: number}) => +e.y);
     const max = Math.max(...values);
     const min = Math.min(...values);
+    const { axisBottom, axisLeft } = json[0];
 
     return (
       <div
@@ -31,12 +32,12 @@ const LineChart = (): JSX.Element => {
           }}
           enableGridX={false}
           axisBottom={{
-            legend: "Années",
+            legend: axisBottom ?? "Années",
             legendOffset: 44,
             legendPosition: "middle",
           }}
           axisLeft={{
-            legend: "Valorisation",
+            legend: axisLeft ?? "Valorisation",
             legendOffset: -80,
             legendPosition: "middle",
           }}
@@ -49,6 +50,7 @@ const LineChart = (): JSX.Element => {
           isInteractive={true}
           useMesh={true}
           enableCrosshair={true}
+          enablePoints={false}
           crosshairType="cross"
           animate={true}
           motionConfig="stiff"
