@@ -8,7 +8,7 @@ const LineChart = (): JSX.Element => {
 
   if (data) {
     json = JSON.parse(data as string);
-    const values = json[0].data.map((e: {x: number, y: number}) => +e.y);
+    const values = json[0].data.map((e: { x: number; y: number }) => +e.y);
     const max = Math.max(...values);
     const min = Math.min(...values);
     const { axisBottom, axisLeft } = json[0];
@@ -45,6 +45,22 @@ const LineChart = (): JSX.Element => {
             type: "linear",
             min: "auto",
             max: max + (max - min) * 0.25,
+          }}
+          tooltip={(e) => {
+            return (
+              <div
+                style={{
+                  padding: "8px",
+                  background: "#fdfdfd",
+                  border: "1px solid #3D3D3D",
+                  borderRadius: "4px",
+                }}
+              >
+                <div style={{ fontWeight: "bold" }}>
+                  {e.point.data.xFormatted} : {e.point.data.yFormatted}
+                </div>
+              </div>
+            );
           }}
           yFormat=">-.0f"
           isInteractive={true}
