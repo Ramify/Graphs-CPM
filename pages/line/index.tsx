@@ -62,7 +62,7 @@ const LineChart = (): JSX.Element => {
                 }}
               >
                 <div style={{ fontWeight: "bold" }}>
-                  {e.point.data.xFormatted} : {e.point.data.yFormatted}
+                  {e.point.data.x.toString()} : {e.point.data.y.toString()}
                 </div>
               </div>
             );
