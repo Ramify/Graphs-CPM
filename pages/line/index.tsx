@@ -31,6 +31,11 @@ const LineChart = (): JSX.Element => {
             scheme: "category10",
           }}
           enableGridX={false}
+          xScale={{
+            type: "linear",
+            min: "auto",
+            max: "auto",
+          }}
           axisBottom={{
             legend: axisBottom ?? "Années",
             legendOffset: 44,
