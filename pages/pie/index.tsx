@@ -19,7 +19,9 @@ const PieChart = (): JSX.Element => {
   return (
     <div style={{ width: "100vw", height: "100vh" }}>
       <ResponsivePie
-        arcLabel={(d) => d.value > 0 ?`${d.value}${symbol}` : ''}
+        arcLabel={(d) => d.value > 0 ?`${d.value} ${symbol}` : ''}
+        innerRadius={0.55}
+        sortByValue
         legends={[
           {
             anchor: "top-left",
@@ -40,11 +42,17 @@ const PieChart = (): JSX.Element => {
           left: 24,
           right: 24,
         }}
-        colors={{ scheme: "pastel1" }}
+        colors={{ scheme: "set3" }}
         activeOuterRadiusOffset={12}
-        arcLabelsRadiusOffset={0.75}
         enableArcLinkLabels={false}
         data={chartData}
+        tooltip={(e) => {
+          return (
+            <div style={{ padding: "8px", background: "#fdfdfd", border: "1px solid #3D3D3D", borderRadius: "4px" }}>
+              <div style={{ fontWeight: "bold" }}>{e.datum.id} : {e.datum.value} {symbol}</div>
+            </div>
+          );
+        }}
       />
     </div>
   );
