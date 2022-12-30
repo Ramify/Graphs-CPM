@@ -15,6 +15,7 @@ const PieChart = (): JSX.Element => {
   }
 
   const { chartData, symbol } = JSON.parse(data as string);
+  const cleanChartData = chartData.filter((elem: {id: string, value: string}) => parseInt(elem.value) !== 0);
 
   return (
     <div style={{ width: "100vw", height: "100vh" }}>
@@ -45,7 +46,7 @@ const PieChart = (): JSX.Element => {
         colors={{ scheme: "set3" }}
         activeOuterRadiusOffset={12}
         enableArcLinkLabels={false}
-        data={chartData}
+        data={cleanChartData}
         tooltip={(e) => {
           return (
             <div
